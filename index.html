@@ -87,6 +87,11 @@
         📣 Announcements on Telegram
         <small>Official updates if email / the site are unreachable</small>
       </a>
+      <a id="ipfs" href="#" rel="noopener" style="display:none">
+        🛰️ Decentralized mirror (IPFS · sgacrypto.x)
+        <small>This page on IPFS — survives a registrar/domain takedown. Reachable
+        via a Web3 browser (Brave) or the gateway link.</small>
+      </a>
     </div>
 
     <p class="note">
@@ -100,6 +105,12 @@
   <script>
     // OPTIONAL: set your Telegram channel link here to show the button.
     const TELEGRAM_URL = ""; // e.g. "https://t.me/sgatrader_status"
+
+    // Decentralized mirror (RESILIENCE_PLAN P0-1 L2): this page is also pinned on
+    // IPFS and addressable at the Web3 domain sgacrypto.x — survives even a
+    // registrar/domain seizure. Set the live directory CID once pinned.
+    const IPFS_CID = "bafybeiall3l7n3hbxnsl5p4aajkoym5srnkyb2iwm5cruv3rwvp4btz3zq";
+    const X_DOMAIN = "sgacrypto.x"; // Unstoppable Domains Web3 name
 
     // Services to probe. We hit health/landing endpoints with no-cors so a
     // cross-origin opaque response still tells us "reachable". A network error
@@ -161,6 +172,14 @@
     if (TELEGRAM_URL) {
       const a = document.getElementById("tg");
       a.href = TELEGRAM_URL; a.style.display = "block";
+    }
+    if (IPFS_CID) {
+      const a = document.getElementById("ipfs");
+      // Prefer the .x.link gateway (works in normal browsers); the raw IPFS
+      // gateway is the registrar-independent path.
+      a.href = "https://" + X_DOMAIN + ".link";
+      a.title = "ipfs://" + IPFS_CID + "  ·  https://" + IPFS_CID + ".ipfs.dweb.link/";
+      a.style.display = "block";
     }
     run();
     setInterval(run, 30000);
