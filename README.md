@@ -4,7 +4,7 @@ Independent, static status page hosted on **GitHub Pages** (off our own droplets
 and off Cloudflare) so it stays reachable during a main-site / CDN / DNS outage.
 
 - Client-side probes the main + **direct-** (Cloudflare-bypass) hostnames every 30s.
-- Surfaces the break-glass URLs (`direct-crypto` / `direct-sgaema`) and the
+- Surfaces the break-glass URLs (`direct-crypto` / `direct-sgastretch`) and the
   Telegram announcement channel.
 - No build step — plain `index.html`. Edit + push to deploy.
 
